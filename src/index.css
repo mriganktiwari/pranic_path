@@ -1069,4 +1069,326 @@ body {
   }
 }
 
+/* --- Immersive Somatic Practice Portal --- */
+.somatic-practice-portal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsl(220, 12%, 8%); /* Deep carbon space background */
+  color: hsl(220, 10%, 90%);
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px var(--space-md);
+  font-family: var(--font-sans);
+  text-align: center;
+}
+
+.somatic-header {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.somatic-day-tag {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-peace);
+  font-weight: 600;
+}
+
+.somatic-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.somatic-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.somatic-close-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.somatic-main-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px 0;
+}
+
+/* Breathing Aura Expanding & Contracting (6s cycle) */
+.pulse-breathing-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 320px;
+  margin-top: -160px;
+  margin-left: -160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, hsla(256, 40%, 68%, 0.18) 0%, transparent 70%);
+  animation: breathe 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(0.85);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+.somatic-visual-anchor {
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* SVG countdown progress ring style */
+.timer-svg {
+  width: 180px;
+  height: 180px;
+  filter: drop-shadow(0 0 15px hsla(256, 40%, 68%, 0.2));
+}
+
+.timer-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.05);
+}
+
+.timer-progress {
+  fill: none;
+  stroke: var(--accent-peace); /* Serene indigo theme glow */
+  stroke-dasharray: 502.65; /* 2 * PI * 80 */
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.timer-text {
+  fill: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: var(--font-sans);
+}
+
+.somatic-step-card {
+  margin-top: 40px;
+  z-index: 10;
+  width: 100%;
+}
+
+.somatic-step-pill {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.somatic-instruction {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #fff;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.somatic-controls {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+  z-index: 10;
+}
+
+.somatic-btn-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.btn-somatic-round {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-somatic-round:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-somatic-round:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.btn-somatic-play {
+  width: 64px;
+  height: 64px;
+  background: var(--accent-peace);
+  border-color: var(--accent-peace);
+  font-size: 22px;
+  box-shadow: 0 4px 15px hsla(256, 40%, 68%, 0.3);
+}
+
+.btn-somatic-play:hover {
+  background: hsl(256, 30%, 55%);
+  box-shadow: 0 6px 20px hsla(256, 40%, 68%, 0.45);
+}
+
+.somatic-steps-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.somatic-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: background 0.3s ease;
+}
+
+.somatic-dot.active {
+  background: var(--accent-peace);
+  transform: scale(1.2);
+}
+
+.somatic-dot.completed {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Hands-Free Session Launcher Button */
+.btn-somatic-start {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--accent-peace);
+  color: #fff;
+  border: none;
+  padding: 16px;
+  border-radius: var(--radius-card);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px hsla(256, 20%, 45%, 0.15);
+  transition: all 0.3s ease;
+  margin-top: 16px;
+}
+
+.btn-somatic-start:hover {
+  background: hsl(256, 20%, 38%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px hsla(256, 20%, 45%, 0.25);
+}
+
+/* Interactive Palms Visuals for Day 1 */
+.interactive-palms-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+  padding: 15px;
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+}
+
+.palm-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.palm-svg {
+  width: 100px;
+  height: 120px;
+  fill: none;
+  stroke: var(--text-secondary);
+  stroke-width: 2;
+  transition: all 0.3s ease;
+}
+
+.palm-svg .hand-shape {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 0;
+}
+
+.palm-svg .gateway-node {
+  fill: var(--accent-peace-bg);
+  stroke: var(--accent-peace);
+  stroke-width: 2;
+  animation: pulse-node 2s infinite ease-in-out;
+}
+
+@keyframes pulse-node {
+  0%, 100% {
+    r: 6;
+    fill-opacity: 0.4;
+  }
+  50% {
+    r: 10;
+    fill-opacity: 0.9;
+  }
+}
+
+.palm-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-top: 6px;
+}
+
+
 

@@ -1,3 +1,9 @@
+export interface SomaticStep {
+  text: string;       // Condensed instruction displayed in full-screen portal
+  duration: number;   // Paced duration of this step in seconds
+  audioCue: string;   // Serenely narrated voice script read at step start
+}
+
 export interface Lesson {
   id: number;
   title: string;
@@ -7,9 +13,9 @@ export interface Lesson {
   concept: string[]; // Divided into digestible paragraphs
   exercise: {
     title: string;
-    steps: string[];
+    steps: SomaticStep[];
   };
-  ttsPhrases: string[]; // Sentences for TTS and Karaoke-style highlight tracking
+  ttsPhrases: string[]; // Sentences for reading concept review page out loud
   imagePath?: string; // Optional illustration path
   sourceText?: { // Optional original textbook reading snippet
     chapter: string;
@@ -23,7 +29,7 @@ export const lessons: Lesson[] = [
     id: 0,
     title: "Introduction: The Invitation",
     module: "Introduction",
-    duration: "4 mins",
+    duration: "2.5 mins",
     description: "Discover the science of Prana, the two absolute laws of self-healing, and read inspiring real-world testimonials.",
     concept: [
       "Welcome to Daily Prana. Pranic Healing is a highly developed and tested system of energy medicine that utilizes a vital life force—known as 'prana' or 'ki'—to balance, harmonize, and transform the body's energy processes.",
@@ -34,10 +40,26 @@ export const lessons: Lesson[] = [
     exercise: {
       title: "Self-Reflection & Setup",
       steps: [
-        "Find a quiet, calm space where you will practice for the next 9 days.",
-        "Take a slow, deep breath, and set a clear personal intention for your healing journey.",
-        "Acknowledge that your hands have a natural, organic capacity to feel and channel energy.",
-        "Ensure you are ready: proceed to Day 1 tomorrow with an open, receptive mind."
+        {
+          text: "Find a quiet, calm space where you will practice for the next 9 days.",
+          duration: 30,
+          audioCue: "Find a quiet, calm space where you can sit comfortably and undisturbed. Let your physical body settle and relax."
+        },
+        {
+          text: "Take a slow, deep breath, and set a clear personal intention for your healing journey.",
+          duration: 45,
+          audioCue: "Take a slow, deep breath. Focus on your heart, and set a clear personal intention for your healing journey. Why are you here? What do you wish to awaken?"
+        },
+        {
+          text: "Acknowledge that your hands have a natural, organic capacity to feel and channel energy.",
+          duration: 45,
+          audioCue: "Acknowledge that your hands have a natural, organic capacity to feel and channel energy. They are your primary instruments of care and healing."
+        },
+        {
+          text: "Ensure you are ready: proceed to Day 1 tomorrow with an open, receptive mind.",
+          duration: 30,
+          audioCue: "Close your eyes, take one last deep breath, and prepare your mind to be open, curious, and receptive over the next nine days. Your journey has begun."
+        }
       ]
     },
     ttsPhrases: [
@@ -65,7 +87,7 @@ export const lessons: Lesson[] = [
     id: 1,
     title: "Activating the Hand Gateways",
     module: "The Sensor",
-    duration: "3 mins",
+    duration: "4 mins",
     description: "Stimulate the minor energy centers in your palms to begin feeling the subtle flow of prana.",
     concept: [
       "Prana is the invisible, vital life force that keeps your physical body alive, healthy, and vibrant. In Pranic Healing, our hands are our primary tools for sensing and channeling this energy.",
@@ -75,12 +97,36 @@ export const lessons: Lesson[] = [
     exercise: {
       title: "Hand Gateway Awakening",
       steps: [
-        "Sit comfortably with a relaxed, straight spine and place your feet flat on the floor.",
-        "Take three slow, gentle breaths to anchor your mind into the present moment.",
-        "Press your right thumb firmly into the exact center of your left palm. Rotate it clockwise 5 times, focusing on the pressure.",
-        "Switch hands. Press your left thumb firmly into the center of your right palm and rotate clockwise 5 times.",
-        "Rub your palms together vigorously for 10 seconds. Feel the warm, tingling friction building between them.",
-        "Hold your hands still, rest them on your lap with palms facing upwards, and quietly observe the gentle pulsing or heat in the centers of your hands."
+        {
+          text: "Sit comfortably with a relaxed, straight spine and place your feet flat on the floor.",
+          duration: 30,
+          audioCue: "Sit comfortably with a relaxed, straight spine. Let your shoulders drop, and place your feet flat on the floor."
+        },
+        {
+          text: "Take three slow, gentle breaths to anchor your mind into the present moment.",
+          duration: 45,
+          audioCue: "Take three slow, gentle breaths. Inhale peace, exhale all physical and mental tension, anchoring your mind into the present moment."
+        },
+        {
+          text: "Press your right thumb firmly into the exact center of your left palm. Rotate it clockwise slowly 5 times.",
+          duration: 45,
+          audioCue: "Press your right thumb firmly into the exact center of your left palm. Rotate it clockwise slowly five times. Focus entirely on the physical pressure and the warming sensation."
+        },
+        {
+          text: "Press your left thumb firmly into the center of your right palm and rotate clockwise slowly 5 times.",
+          duration: 45,
+          audioCue: "Switch hands. Press your left thumb firmly into the center of your right palm. Rotate it clockwise five times, awakening the gateway of your right hand."
+        },
+        {
+          text: "Rub your palms together vigorously for 10 seconds. Feel the warm, tingling friction.",
+          duration: 30,
+          audioCue: "Rub your palms together vigorously. Feel the warm, tingling friction building between them, activating the blood flow and energy gateways."
+        },
+        {
+          text: "Hold your hands still, rest them on your lap with palms facing upwards, and quietly observe.",
+          duration: 60,
+          audioCue: "Bring your hands to rest on your lap, palms facing upwards. Keep them completely still. Quietly observe the gentle pulsing, warmth, or tingling in the centers of your hands. Simply witness the sensation."
+        }
       ]
     },
     ttsPhrases: [
@@ -118,19 +164,32 @@ export const lessons: Lesson[] = [
     exercise: {
       title: "Pulsing the Sphere",
       steps: [
-        "Sit relaxed and take two slow breaths. Let your shoulders drop completely.",
-        "Stimulate your hand gateways: press each palm center clockwise, then rub your palms for 5 seconds.",
-        "Bring your hands together about 3 inches apart, palms facing each other, fingers slightly curved like you are cradling a soft sphere.",
-        "Ensure your elbows and wrists are entirely loose and supported.",
-        "Slowly draw your hands apart until they are 6 inches away (taking about 3 seconds).",
-        "Slowly bring them back together until they are 2 inches away (taking about 3 seconds).",
-        "Maintain this slow, rhythmic pulsing. Observe the invisible barrier between your palms."
+        {
+          text: "Sit relaxed, let shoulders drop completely, and activate your gateways.",
+          duration: 45,
+          audioCue: "Sit relaxed, shoulders dropped. Press the centers of both palms, and rub your hands together to stimulate your gateways."
+        },
+        {
+          text: "Hold hands 3 inches apart, palms facing, fingers curved like holding a soft sphere.",
+          duration: 45,
+          audioCue: "Bring your hands together about three inches apart, palms facing each other. Curve your fingers slightly, as if gently cradling a soft, delicate energy sphere. Keep your elbows and wrists loose."
+        },
+        {
+          text: "Slowly draw hands apart to 6 inches, then back to 2 inches (rhythmic pulsing).",
+          duration: 60,
+          audioCue: "Slowly draw your hands apart to six inches, then slowly bring them back to two inches. Take about three seconds for each direction, keeping your movement smooth and rhythmic."
+        },
+        {
+          text: "Observe the subtle magnetic cushion or resistance between your palms.",
+          duration: 60,
+          audioCue: "Maintain this slow pulsing. Bring your focus between your palms. Observe if you feel a subtle magnetic push, warmth, or elastic resistance as your hands get closer. Relax into it."
+        }
       ]
     },
     ttsPhrases: [
       "Welcome to Day Two. Today, we will learn the secret of relaxation to feel the dynamic energetic boundary between our hands.",
       "Sit back. Allow your shoulders to drop, and feel your arms grow heavy and completely loose.",
-      "Press the center of your left palm. [pause: 2s] Press the center of your right palm. [pause: 2s] Rub them together gently to activate them.",
+      "Press the center of your left palm. Press the center of your right palm. Rub them together gently to activate them.",
       "Now, hold your hands about three inches apart, palms facing each other. Keep your fingers curved and loose, as if holding a soft, delicate sphere.",
       "Slowly... very slowly... draw your hands apart until they are six inches away.",
       "And now, slowly bring them back together, until they are two inches apart.",
@@ -153,7 +212,7 @@ export const lessons: Lesson[] = [
     id: 3,
     title: "The Sensory Vocabulary",
     module: "The Sensor",
-    duration: "4 mins",
+    duration: "3.5 mins",
     description: "Catalog the unique way your nervous system interprets subtle energy impressions.",
     concept: [
       "Everyone registers subtle energy differently. There is no single 'correct' way to feel prana. Your energy body has a unique sensory vocabulary.",
@@ -167,12 +226,26 @@ export const lessons: Lesson[] = [
     exercise: {
       title: "Mapping Energy Sensations",
       steps: [
-        "Sit and relax. Activate your palm chakras: press palm centers, rub for 5 seconds.",
-        "Position your hands 3 inches apart in the sphere posture.",
-        "Rhythmically pulse your hands slowly between 2 inches and 6 inches.",
-        "Bring 100% of your awareness to the centers of your palms and fingertips.",
-        "Observe the specific qualities: Is it magnetic? Is it warm? Does it tingle? Does it pulse?",
-        "Write down or quietly note your primary sensation. This is your personal energetic signature."
+        {
+          text: "Sit, relax, and activate hand gateways (press palm centers, rub together).",
+          duration: 30,
+          audioCue: "Sit back, relax your shoulders, and activate your hand gateways by pressing palm centers and rubbing them together."
+        },
+        {
+          text: "Establish the sphere shape, three inches apart, with relaxed wrists.",
+          duration: 45,
+          audioCue: "Bring your hands to the sphere posture, three inches apart. Relax your wrists and elbows completely. Breathe slowly."
+        },
+        {
+          text: "Pulse hands slowly between 2 and 6 inches, focusing awareness on palms.",
+          duration: 60,
+          audioCue: "Pulse your hands rhythmically. Focus one hundred percent of your awareness on the centers of your palms and your fingertips."
+        },
+        {
+          text: "Observe: Is it magnetic, warm, tingling, or pulsing? Catalog your sensations.",
+          duration: 60,
+          audioCue: "Observe the specific qualities of this energy. Is it magnetic resistance, warm thermal shifts, active tingling, or a rhythmic pulse? Simply catalog how your body feels it without trying to force anything."
+        }
       ]
     },
     ttsPhrases: [
@@ -203,7 +276,7 @@ export const lessons: Lesson[] = [
     id: 4,
     title: "Finding the Outer Boundary",
     module: "The Scanner",
-    duration: "4 mins",
+    duration: "3.5 mins",
     description: "Learn to approach the energy field slowly to locate the outer edge of the inner aura.",
     concept: [
       "Your physical body is surrounded and interpenetrated by a protective energy shield called the inner aura. Typically, for healthy individuals, this aura extends about 2 to 5 inches from the skin.",
@@ -213,12 +286,26 @@ export const lessons: Lesson[] = [
     exercise: {
       title: "Aura Boundary Detection",
       steps: [
-        "Activate your hands: press palm centers and rub them together.",
-        "Select your left arm as your practice target. Extend it forward, relaxed.",
-        "Hold your right scanning hand about 12 inches away from your left shoulder, palm facing the skin.",
-        "Relax your scanning wrist, making it loose and springy.",
-        "Move your scanning hand extremely slowly—about 1 inch per second—toward your shoulder.",
-        "Note the exact distance from the skin where your palm first registers a subtle pressure, temperature shift, or tingling cushion. This is the boundary."
+        {
+          text: "Prepare scanning hand: press palm centers and rub palms together.",
+          duration: 30,
+          audioCue: "Sit comfortably and activate your hand gateways. Press each palm and rub them together to sensitize your scanning instrument."
+        },
+        {
+          text: "Extend left arm loose. Position right scanning hand 12 inches from shoulder.",
+          duration: 45,
+          audioCue: "Extend your left arm forward, keeping it loose. Hold your right scanning hand about twelve inches away from your left shoulder, palm facing the skin. Let your scanning wrist feel loose and springy."
+        },
+        {
+          text: "Move scanning hand extremely slowly (1 inch per second) toward skin.",
+          duration: 60,
+          audioCue: "Move your scanning hand extremely slowly, about one inch per second, toward your shoulder. Focus your entire awareness on your right palm."
+        },
+        {
+          text: "Note the exact distance where palm registers an air density or sensory cushion.",
+          duration: 60,
+          audioCue: "Note the exact distance from the skin where your palm registers a change in air density, a soft pressure, or a temperature shift. That cushion is the outer boundary of your inner aura."
+        }
       ]
     },
     ttsPhrases: [
@@ -244,7 +331,7 @@ export const lessons: Lesson[] = [
     id: 5,
     title: "Detecting Pranic Congestion",
     module: "The Scanner",
-    duration: "4 mins",
+    duration: "3 mins",
     description: "Learn how blocked, stagnant energy registers as dense, hot, protruding blockages.",
     concept: [
       "When physical or emotional strain occurs, the natural flow of prana becomes blocked. This leads to Pranic Congestion—an accumulation of spent, dirty energy in the aura.",
@@ -257,12 +344,26 @@ export const lessons: Lesson[] = [
     exercise: {
       title: "Scanning for Congestion",
       steps: [
-        "Sensitize your hands through palm presses and friction.",
-        "We will scan a joint that occasionally feels stiff or a muscle that feels tense (e.g., neck, shoulder, or lower back).",
-        "Hold your palm 12 inches away, find the baseline boundary of the aura.",
-        "Slowly glide your hand parallel over the tense area, keeping the same distance.",
-        "Look for a sudden thickness, a warm sensation, or a magnetic push that resists your hand.",
-        "Take a slow breath, withdraw your hand, and shake it out to clear any residual energy."
+        {
+          text: "Sensitize hand gateways through palm pressing and physical friction.",
+          duration: 30,
+          audioCue: "Prepare your hands by pressing palm centers and rubbing them together vigorously. Let them feel warm and active."
+        },
+        {
+          text: "Choose a tense joint/muscle. Find baseline aura boundary nearby.",
+          duration: 45,
+          audioCue: "Find an area of physical stiffness or tension—like your shoulder or neck. Hold your scanning palm ten inches away, and slowly move in to locate the healthy baseline boundary of the aura."
+        },
+        {
+          text: "Glide hand parallel over the tense area, seeking rubbery density or warmth.",
+          duration: 60,
+          audioCue: "Slowly glide your hand parallel over the tense area, keeping the same distance. Look for a sudden thickness, a dense rubbery resistance that pushes back, or localized heat."
+        },
+        {
+          text: "Withdraw scanning hand and flick it downward to clear residual energy.",
+          duration: 30,
+          audioCue: "Withdraw your scanning hand. Flick it downward or gently shake it out to clear any sticky, residual energy you might have picked up."
+        }
       ]
     },
     ttsPhrases: [
@@ -287,7 +388,7 @@ export const lessons: Lesson[] = [
     id: 6,
     title: "Detecting Pranic Depletion",
     module: "The Scanner",
-    duration: "4.5 mins",
+    duration: "3.5 mins",
     description: "Identify energy deficits and vacuum-like voids that signal fatigue or weakness.",
     concept: [
       "The opposite of congestion is Pranic Depletion. This occurs when an energy center or body part has suffered a leakage, drainage, or exhaustion of vital prana.",
@@ -300,12 +401,26 @@ export const lessons: Lesson[] = [
     exercise: {
       title: "Scanning for Depletion",
       steps: [
-        "Activate your hand gateways and check your basic sensitivity.",
-        "We will scan an area that often feels fatigued or low in energy (e.g., the stomach area when hungry, or the temples when tired).",
-        "Establish the baseline aura boundary in a healthy adjacent area.",
-        "Slowly glide your palm over the fatigued area, observing the change in pressure.",
-        "Note if your hand suddenly drops into an empty, hollow zone, feels a cold draft, or feels a quiet vacuum pull.",
-        "Quietly observe the difference between this empty space and the congested blockages you felt yesterday."
+        {
+          text: "Wake up hand gateways and establish high sensory sensitivity.",
+          duration: 30,
+          audioCue: "Wake up your hand gateways. Press palm centers and rub your hands together to establish high sensory receptivity."
+        },
+        {
+          text: "Choose a fatigued area (temples, abdomen). Find baseline aura nearby.",
+          duration: 45,
+          audioCue: "Choose an area that feels fatigued or low in energy, like your temples or upper abdomen. Find the healthy aura baseline boundary nearby first."
+        },
+        {
+          text: "Glide hand over fatigued area, noticing empty gaps or vacuum draft.",
+          duration: 60,
+          audioCue: "Slowly glide your scanning palm over the fatigued area. Notice if the magnetic resistance suddenly drops, leaving a hollow gap, a cold draft, or a quiet vacuum pull."
+        },
+        {
+          text: "Observe the difference between empty depletion and heavy congestion.",
+          duration: 45,
+          audioCue: "Note the difference between this empty valley of depletion and the thick mountain of congestion you scanned yesterday. Slowly lower your hands and sit in quiet awareness."
+        }
       ]
     },
     ttsPhrases: [
@@ -333,7 +448,7 @@ export const lessons: Lesson[] = [
     id: 7,
     title: "The Law of Cleansing",
     module: "The Purifier",
-    duration: "3.5 mins",
+    duration: "2 mins",
     description: "Understand the absolute prerequisite of cleansing before energizing, and prepare your disposal medium.",
     concept: [
       "In Pranic Healing, there is an absolute, golden rule: Cleansing must always precede energizing.",
@@ -344,10 +459,21 @@ export const lessons: Lesson[] = [
     exercise: {
       title: "Sacred Disposal Preparation",
       steps: [
-        "Gather a small glass or plastic bowl. Fill it with about 1 cup of normal tap water.",
-        "Add 1 to 2 tablespoons of common cooking salt. Stir it gently.",
-        "Set the bowl on a table within comfortable arm's reach of your seat.",
-        "Take a slow breath, look at the bowl, and set a clear mental intention: 'This salt-water is a clean, secure vessel that disintegrates and neutralizes all dirty energy.'"
+        {
+          text: "Gather a bowl and fill it with about 1 cup of normal tap water.",
+          duration: 30,
+          audioCue: "Gather a small bowl and fill it with about one cup of tap water. Add one or two tablespoons of common salt."
+        },
+        {
+          text: "Add 1-2 tablespoons of salt, stir gently, and place within arm's reach.",
+          duration: 30,
+          audioCue: "Stir the salt water gently and place the bowl on a table within comfortable arm's reach of your seat."
+        },
+        {
+          text: "Look at the bowl and set the clear intention of disintegration.",
+          duration: 45,
+          audioCue: "Take a slow breath. Look at the bowl, and set a clear, focused mental intention: This salt-water is a secure vessel that will instantly disintegrate and neutralize all bioplasmic waste."
+        }
       ]
     },
     ttsPhrases: [
@@ -372,7 +498,7 @@ export const lessons: Lesson[] = [
     id: 8,
     title: "The Downward Sweep",
     module: "The Purifier",
-    duration: "4 mins",
+    duration: "3 mins",
     description: "Master the hand posture and one-way sweeping motion used to comb stagnant energy out of the aura.",
     concept: [
       "To remove dirty energy, we use a technique called Sweeping. Think of it as an energetic comb.",
@@ -384,13 +510,21 @@ export const lessons: Lesson[] = [
     exercise: {
       title: "Practicing the Sweep Stroke",
       steps: [
-        "Sit comfortably. Place your salt-water bowl nearby (though we will practice the physical stroke today).",
-        "Choose your left arm as the practice area.",
-        "Form your right hand into the 'comb' shape: curved, relaxed fingers.",
-        "Position your hand 6 inches above your left shoulder.",
-        "In a smooth, continuous, downward sweep, brush your hand through the air, past your elbow, all the way down and off your fingertips.",
-        "Imagine you are brushing out thick, gray cobwebs. Keep your arm completely loose.",
-        "Repeat this single downward stroke 5 times. Remember: lift your hand away from the body before returning to the top—never sweep upwards!"
+        {
+          text: "Curve fingers slightly on dominant hand to form a loose 'comb'.",
+          duration: 45,
+          audioCue: "Sit comfortably. Choose your opposite arm as the practice area. Form your dominant hand into a loose comb, with curved, relaxed, and slightly separated fingers."
+        },
+        {
+          text: "Position 6 inches above shoulder. Sweep down continuously off fingertips.",
+          duration: 60,
+          audioCue: "Position your hand six inches above your opposite shoulder. In a smooth, continuous downward sweep, brush your hand through the air, past your elbow, all the way off your fingertips. Imagine brushing out sticky, gray cobwebs."
+        },
+        {
+          text: "Lift hand away, return to top, repeat. Keep a one-way downward sweep.",
+          duration: 60,
+          audioCue: "Repeat this downward stroke. Remember the absolute rule: lift your hand away from the body before returning to the top. Sweep downward only. Never sweep back-and-forth, which stirs up the energy."
+        }
       ]
     },
     ttsPhrases: [
@@ -417,7 +551,7 @@ export const lessons: Lesson[] = [
     id: 9,
     title: "The Flick, Disintegrate & Wash",
     module: "The Purifier",
-    duration: "5 mins",
+    duration: "4.5 mins",
     description: "Combine scanning, downward sweeping, immediate salt-water disposal, and hand purification for a complete cleansing cycle.",
     concept: [
       "Today, we integrate all the micro-skills you have learned into a complete, safe energetic cleansing loop.",
@@ -428,29 +562,45 @@ export const lessons: Lesson[] = [
     exercise: {
       title: "The Complete Cleansing Cycle",
       steps: [
-        "Place your prepared salt-water bowl on the table next to you.",
-        "Activate your hands: press palm centers, rub for 10 seconds.",
-        "Select a tense area (shoulder or neck) and scan it to locate the heavy, congested blockage.",
-        "Form your hand comb, hold it 6 inches above the area.",
-        "Sweep downward in a smooth, continuous stroke.",
-        "As soon as your hand passes the area, flick your fingers sharply downward toward the salt-water bowl. Visualise the gray energy dissolving in the salt.",
-        "Repeat this sweep-and-flick sequence 10 to 12 times.",
-        "Rescan the area. Note if the air feels lighter and cooler.",
-        "Immediately wash your hands thoroughly with physical soap, salt, and warm running water."
+        {
+          text: "Position salt bowl nearby. Rub palms for 10 seconds to fully activate.",
+          duration: 45,
+          audioCue: "Place your salt-water bowl nearby. Activate your hand gateways by pressing palm centers and rubbing them vigorously for ten seconds."
+        },
+        {
+          text: "Scan target (shoulder/neck) to locate the congested blockage area.",
+          duration: 45,
+          audioCue: "Scan your opposite shoulder or neck. Find that heavy, warm patch of congested energy. Hold your scanning hand six inches above the congestion."
+        },
+        {
+          text: "Sweep downward through patch, flicking fingers sharply into salt-water.",
+          duration: 90,
+          audioCue: "Sweep downward through the congested patch. As soon as your hand passes the area, flick your fingers sharply toward the salt-water bowl. Imagine the sticky gray energy dissolving in the salt. Repeat this rhythm."
+        },
+        {
+          text: "Scan area again, verifying if the aura feels light, cool, and clean.",
+          duration: 45,
+          audioCue: "Quietly scan the cleansed area once more. Feel if the air is now cooler, lighter, and flowing freely. You have cleared the congestion."
+        },
+        {
+          text: "Wash hands thoroughly with soap, salt, and running water.",
+          duration: 45,
+          audioCue: "Finish the session by physically washing your hands with water and soap or salt. This cuts the bioplasmic connection and keeps your field pristine."
+        }
       ]
     },
     ttsPhrases: [
       "Welcome to Day Nine. Today, we weave everything together into the complete, safe cleansing loop.",
       "Ensure your salt-water bowl is placed near you, within easy reach.",
-      "Activate your hand gateways. [pause: 2s] Rub them vigorously. [pause: 3s]",
-      "Scan your opposite shoulder or neck. Find that heavy, warm patch of congested energy. [pause: 3s]",
+      "Activate your hand gateways. Rub them vigorously.",
+      "Scan your opposite shoulder or neck. Find that heavy, warm patch of congested energy.",
       "Form your hand comb. Hold it six inches above the congestion.",
       "Now, sweep downward... and immediately, flick your fingers sharply toward the salt-water bowl. Throw it away.",
-      "Let's repeat this rhythm. Position above... sweep downward... and flick into the salt. [pause: 2s]",
+      "Let's repeat this rhythm. Position above... sweep downward... and flick into the salt.",
       "Feel the sticky, heavy gray strings sliding off your fingers, instantly dissolved by the salt.",
-      "Sweep downward... and flick. [pause: 2s] Sweep downward... and flick. [pause: 2s]",
+      "Sweep downward... and flick. Sweep downward... and flick.",
       "Imagine the area growing lighter, brighter, and completely clear.",
-      "Sweep downward... and flick. [pause: 2s] Sweep downward... and flick. [pause: 2s]",
+      "Sweep downward... and flick. Sweep downward... and flick.",
       "Quietly stop. Hold your palm over the area and scan it one last time.",
       "Does the air feel cool, light, and flowing? You have cleared the blockage.",
       "Now, immediately wash your hands with physical soap and water to keep your own energy pristine.",
