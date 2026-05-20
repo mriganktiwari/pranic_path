@@ -1,73 +1,102 @@
-# React + TypeScript + Vite
+# 🧘‍♂️ Prana Daily: Somatic Practice Portal & Healing Directory
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-fidelity web companion designed to help learners study and practice **Pranic Healing** safely and systematically, inspired by the teachings of **Grand Master Choa Kok Sui** (*Miracles Through Pranic Healing*). 
 
-Currently, two official plugins are available:
+This portal features **The Masterclass Hub** for step-by-step physical skills training (Sensing, Scanning, Sweeping, and Projecting energy) and **The Healing Directory** as a searchable "First-Aid" self-treatment handbook—complete with authentic, verbatim textbook passages and citations for learning validation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **🧘‍♀️ The Masterclass Hub:** A 12-chapter interactive syllabus covering hand gateway activation, sensory sensitization, boundaries scanning, auric sweeping, energy disposal, and two-hand prana projection.
+- **📖 The Healing Directory:** Categorized step-by-step recipes for self-treatment (Tension Headaches, Fatigue, Muscle Sprains, Indigestion, Fevers) with authentic book citations.
+- **🗣️ Meditatively Paced TTS Narration:** Guided somatic cues narrated at an optimized, comfortable **0.70x rate** to allow for slow, rhythmic breathing (6-3-6-3) during practice.
+- **🌓 Dynamic Theme Convergence:** Full system-synchronized Light and Dark themes that transition in perfect unison across both the dashboard and active somatic player overlays.
+- **🎨 Interactive Visual Guides:** Beautiful inline CSS-animated vector illustrations representing palm energy channels, sweeping lines, and projected energy streams.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Local Development & Build Guide
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Follow these steps to run, build, and test the project on your local machine.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 📋 Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Ensure you have the following installed on your operating system:
+* **Node.js** (v18.0.0 or higher is recommended)
+* **npm** (comes bundled with Node.js)
+
+---
+
+### 1. Installation
+
+Clone or download the repository to your local computer, open your terminal, navigate to the project directory, and install all package dependencies:
+
+```bash
+# Navigate to the workspace directory
+cd pranic_healing_teaching_app_antigravity
+
+# Install all dependencies
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 2. Run the Development Server
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Start Vite's ultra-fast local development server to run the application with Hot Module Replacement (HMR):
+
+```bash
+npm run dev
 ```
+
+Once started, the terminal will display the local address. Open your web browser and navigate to:
+👉 **[http://localhost:5173](http://localhost:5173)**
+
+---
+
+### 3. Build for Production
+
+To compile, optimize, and bundle the entire application for static web hosting (such as GitHub Pages, Vercel, Netlify, or AWS S3):
+
+```bash
+npm run build
+```
+
+This will run TypeScript type-checks (`tsc -b`) and trigger the Vite builder. The compiled, minified code will be generated inside the `/dist` directory.
+
+---
+
+### 4. Preview the Production Build Locally
+
+To test and preview the compiled production build locally before uploading it to a hosting provider:
+
+```bash
+npm run preview
+```
+
+Open the preview link printed in your terminal (usually **[http://localhost:4173](http://localhost:4173)**) to verify that everything loads perfectly.
+
+---
+
+### 5. Linting & Formatting
+
+To run ESLint and scan the codebase for code quality, syntax, or styling issues:
+
+```bash
+npm run lint
+```
+
+---
+
+## 🚀 Deployment to GitHub Pages
+
+The project has been configured with an automated **CI/CD GitHub Actions Pipeline** located at `.github/workflows/deploy.yml`. 
+
+### Automated Deploy
+Every time you push commits to your `master` branch on GitHub:
+1. GitHub Actions automatically starts a secure virtual machine.
+2. It checks out the source code, sets up Node.js v20, and runs `npm run build`.
+3. It deploys the compiled `/dist` directory directly to GitHub Pages.
+
+*Note: In [vite.config.ts](vite.config.ts), we use a dynamic base path property. It resolves assets under the `/pranic_healing_teaching_app_antigravity/` subdirectory in production, but uses root `/` in development for seamless local developer workflows.*
