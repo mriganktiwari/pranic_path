@@ -99,4 +99,4 @@ Every time you push commits to your `master` branch on GitHub:
 2. It checks out the source code, sets up Node.js v20, and runs `npm run build`.
 3. It deploys the compiled `/dist` directory directly to GitHub Pages.
 
-*Note: In [vite.config.ts](vite.config.ts), we use a dynamic base path property. It resolves assets under the `/pranic_healing_teaching_app_antigravity/` subdirectory in production, but uses root `/` in development for seamless local developer workflows.*
+*Note: In [vite.config.ts](vite.config.ts), we use a dynamic base path property. It resolves assets under the `/pranic_path/` subdirectory in production, but uses root `/` in development for seamless local developer workflows.*
