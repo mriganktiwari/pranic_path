@@ -1171,9 +1171,12 @@ export const App: React.FC = () => {
       </div>
 
       {/* Muted Footer */}
-      <footer className="app-footer">
-        <p>Inspired by the teachings of Grand Master Choa Kok Sui</p>
-        <p style={{ opacity: 0.5, marginTop: "2px" }}>Prana Path masterclass core</p>
+      <footer className="app-footer" style={{ padding: "30px 20px 40px", borderTop: "1px solid var(--border-subtle)", marginTop: "40px" }}>
+        <p style={{ fontWeight: 600, color: "var(--text-secondary)", marginBottom: "4px" }}>Inspired by the teachings of Grand Master Choa Kok Sui</p>
+        <p style={{ opacity: 0.5, fontSize: "11px", marginTop: "2px", marginBottom: "16px" }}>Prana Path masterclass core</p>
+        <div style={{ maxWidth: "700px", margin: "0 auto", fontSize: "11.5px", color: "var(--text-secondary)", lineHeight: "1.6", opacity: 0.75, textAlign: "center" }}>
+          ⚠️ <strong>Disclaimer & Copyright Notice:</strong> This is a non-commercial, open-source educational study companion created for personal learning and practice. It is not affiliated with, endorsed by, or authorized by the Institute for Inner Studies (IIS) or the estate of Grand Master Choa Kok Sui. All referenced trademarks, book names, and quoted passages are the sole property of their respective copyright holders and publishers. For official certification and original teachings, please purchase the textbook <em>Miracles Through Pranic Healing</em> and attend certified courses at authorized Pranic Healing centers.
+        </div>
       </footer>
 
       {/* Immersive Somatic Practice Portal Overlay */}
