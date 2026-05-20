@@ -913,7 +913,11 @@ export const App: React.FC = () => {
                         <div className="reading-section" style={{ fontSize: "13.5px", lineHeight: "1.6", color: "var(--text-primary)" }}>
                           {chapter.imagePath && (
                             <div className="lesson-illustration-container" style={{ maxHeight: "200px" }}>
-                              <img src={chapter.imagePath} alt={chapter.title} className="lesson-illustration" />
+                              <img 
+                                src={chapter.imagePath.startsWith('/') ? `${import.meta.env.BASE_URL}${chapter.imagePath.substring(1)}` : `${import.meta.env.BASE_URL}${chapter.imagePath}`} 
+                                alt={chapter.title} 
+                                className="lesson-illustration" 
+                              />
                             </div>
                           )}
                           {chapter.concept.map((para, idx) => (
